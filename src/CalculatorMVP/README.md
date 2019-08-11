@@ -6,7 +6,8 @@ The main differences between CalculatorMVP and CalculatorMVC :
 - Passive views for reusable components
 - The contract between the presenter and the view allows for easy component swapping.
 
-The presenter object is inspired by the presentation model pattern
-A great implementation is when the presenter is designed as a `Supervising Controller` where it retrieves all the data useful for a view from the model, and in parallel it should handle any user interaction updating the model.
+The presenter object is inspired by the presentation model pattern.
+
+A great implementation is when the presenter is designed as a `Supervising Controller` where it retrieves and updates the data useful for a view from the model. In parallel it should handle any user interaction updating the model, and retrieving the data needed to render the view.
 
 The views are passive. They just know how the rendering logic works, which leave room for integrating with CSS styles and animation.
