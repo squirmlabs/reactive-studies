@@ -77,6 +77,33 @@ renderView() {
 }
 ```
 
+The `Presenter` can capture the user's interaction. This method identifies and matches the user's button selections. Once matched, the method calls the correct method exposed inside the main model. `reset`, `calculate`, `addValue` are these methods. Once this specific method is called, we then call for the view to be rendered.
+
+```js
+onBtnClicked(value) {
+  switch (value) {
+    case 'AC':
+      this.model.reset();
+      break;
+    case '=':
+      this.model.calculate(value);
+      break;
+    case '+':
+    case '-':
+    case '/':
+    case '*':
+    case '.':
+      this.model.addValue(value, SYMBOL);
+      break;
+    default:
+      this.model.addValue(value, NUMERIC);
+      break;
+  }
+
+  this.renderView();
+}
+```
+
 ## Calculator.jsx
 
 All the methods defined in the React component are for rendering purposes.
