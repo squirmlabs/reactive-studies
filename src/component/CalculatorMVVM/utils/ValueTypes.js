@@ -1,2 +1,2 @@
-export const SYMBOL = "symbol";
-export const NUMERIC = "numeric";
+export const SYMBOL = 'symbol';
+export const NUMERIC = 'numeric';

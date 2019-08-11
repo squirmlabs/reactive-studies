@@ -1,3 +1,3 @@
 export default {
-    CALCULATE_EVENT: "CalculateEvt"
-}
+  CALCULATE_EVENT: 'CalculateEvt'
+};
