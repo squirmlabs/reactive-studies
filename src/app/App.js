@@ -5,20 +5,20 @@ import { LiteEventEmitter } from 'lite-event-emitter';
 import logo from './logo.svg';
 
 // MVC
-import CalculatorController from '../../component/CalculatorMVC/controller/CalculatorController';
+import CalculatorController from '../../components/calculator-mvc/controller/CalculatorController';
 
 //MVP
-import CalculatorPresenter from '../../component/CalculatorMVP/presenter/CalculatorPresenter';
-import CalculatorModel from '../../component/CalculatorMVP/model/CalculatorModel';
-import Calculator from '../../component/CalculatorMVP/view/Calculator';
+import CalculatorPresenter from '../../components/calculator-mvp/presenter/CalculatorPresenter';
+import CalculatorModel from '../../components/calculator-mvp/model/CalculatorModel';
+import Calculator from '../../components/calculator-mvp/view/Calculator';
 
 // MVVM
-import CalcMVVM from '../../component/CalculatorMVVM/view/Calculator';
-import CalculatorViewModel from '../../component/CalculatorMVVM/viewmodel/CalculatorViewModel';
-import CalcModelMVVM from '../../component/CalculatorMVVM/model/CalculatorModel';
+import CalcMVVM from '../../components/calculator-mvvm/view/Calculator';
+import CalculatorViewModel from '../../components/calculator-mvvm/viewmodel/CalculatorViewModel';
+import CalcModelMVVM from '../../components/calculator-mvvm/model/CalculatorModel';
 
 // Other Components
-import SimpleButton from '../../component/SimpleButton';
+import SimpleButton from '../../components/button';
 
 import './App.css';
 
