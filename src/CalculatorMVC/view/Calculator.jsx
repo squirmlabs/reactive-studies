@@ -3,13 +3,17 @@ import { ulStyle, acStyle, btnStyle, displayStyle } from './Calculator.css';
 import { NUMERIC, SYMBOL } from '../utils/ValueTypes';
 
 export default class Calculator extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.model = this.props.model;
     this.emitter = this.props.emitter;
+    this.state = { displayValue: this.model.total };
+  }
+
+  componentDidMount() {
     this.emitter.on('TotalChanged', _ =>
       this.setState({ displayValue: this.model.total })
     );
-    this.setState({ displayValue: this.model.total });
   }
 
   onButtonClicked(evt) {
