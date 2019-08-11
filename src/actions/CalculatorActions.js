@@ -18,6 +18,6 @@ export function reset() {
 export function appendValue(value) {
   return {
     type: APPEND,
-    toAppend: value
+    result: value
   };
 }
