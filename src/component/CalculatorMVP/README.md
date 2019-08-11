@@ -23,8 +23,7 @@ With an MVP architecture, we do the following. We maintain the behaviors inside 
 
 This allows us to have similar behaviors across the application, reusing the same code for the models and views. This also allows us to adapt target devices without much effort.
 
-An architecture that improved the `MVC` concept created 10 years before it. With its' separation of concerns, `MVP` is very strong contender. If we properly apply these few concepts, our applications will benefit from better debugging and better maintainability. 
-
+An architecture that improved the `MVC` concept created 10 years before it. With its' separation of concerns, `MVP` is very strong contender. If we properly apply these few concepts, our applications will benefit from better debugging and better maintainability.
 
 ## Initialize
 
