@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import CalculatorController from '../CalculatorMVC/controller/CalculatorController';
 import CalculatorPresenter from '../CalculatorMVP/presenter/CalculatorPresenter';
 import CalculatorModel from '../CalculatorMVP/model/CalculatorModel';
-import Calculator from '../CalculatorMVP/view/Calculator.jsx';
+import Calculator from '../CalculatorMVP/view/Calculator';
+import SimpleButton from '../SimpleButton';
 import './App.css';
 
 export default class App extends React.Component {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        <SimpleButton className="btn btn-primary" text="Simple Button" />
       </div>
     );
   }
