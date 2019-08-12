@@ -1,4 +1,4 @@
-import math from 'mathjs';
+import * as mathjs from 'mathjs';
 import { CALCULATE, INIT, APPEND, reset } from '../actions/CalculatorActions';
 import { resultHandler } from '../utils/ResultHandler';
 
@@ -7,7 +7,7 @@ const calculation = (state = reset(), action) => {
     case CALCULATE:
       return {
         type: action.type,
-        result: math.eval(state.result)
+        result: mathjs.evaluate(state.result)
       };
 
     case APPEND:
