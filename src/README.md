@@ -56,3 +56,20 @@ Redux was created on top of three core concepts:
 ### Middleware
 
 Every action will be first passed through a list of middleware. Unlike reducers, middleware can modify, stop, or add more actions. Examples might include: a logging middleware, an authorization middleware that checks if the user has permissions to run the action, or an API middleware that sends something to the server.
+
+## Get Started
+
+When starting a Redux project, we first start by creating the store object, then wrap our main React `view` inside Redux's `Provider` object.
+
+```js
+const store = createStore(CalculatorReducer);
+const container = document.getElementById("calcContainer");
+ReactDOM.render(
+  <Provider store={store}>
+    <CalculatorContainer/>
+  </Provider>, container);
+```
+
+Once the store is created and associated to a specific reducer (Calculator Reducer), we can wrap our main view (Calculator Container) inside a `Provider` object from the redux library.
+
+`Provider` as an object that receives the store as an input and propagates the data to all the container components. The components inside of the application have access to the store via the `Provider`.
