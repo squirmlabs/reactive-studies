@@ -1,7 +1,7 @@
 {
   "plugins":[
+    ["@babel/plugin-proposal-function-bind"],
     ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal"}],
     ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
-    ["@babel/plugin-proposal-function-bind"]
   ]
 }
