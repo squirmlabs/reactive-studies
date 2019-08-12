@@ -2,6 +2,7 @@ import { INIT, CALCULATE, APPEND } from '../actions/CalculatorActions';
 
 export const resultHandlerFromAppend = (prevResult, toAppend) => {
   const lastChar = prevResult.length - 1 || '';
+
   return isNaN(prevResult.charAt(lastChar)) && isNaN(toAppend)
     ? prevResult.substr(0, lastChar) + toAppend
     : prevResult + toAppend;
