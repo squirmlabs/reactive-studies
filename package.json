@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.1.2",
+    "bootstrap": "^4.3.1",
     "core-decorators": "^0.20.0",
     "lite-event-emitter": "^1.0.2",
     "mathjs": "^6.0.4",
