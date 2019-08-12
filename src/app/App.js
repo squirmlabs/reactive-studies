@@ -2,23 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { LiteEventEmitter } from 'lite-event-emitter';
 
+
 import logo from './logo.svg';
 
 // MVC
-import CalculatorController from '../../components/calculator-mvc/controller/CalculatorController';
+import CalculatorController from '../components/calculator-mvc/controller/CalculatorController';
 
 //MVP
-import CalculatorPresenter from '../../components/calculator-mvp/presenter/CalculatorPresenter';
-import CalculatorModel from '../../components/calculator-mvp/model/CalculatorModel';
-import Calculator from '../../components/calculator-mvp/view/Calculator';
+import CalculatorPresenter from '../components/calculator-mvp/presenter/CalculatorPresenter';
+import CalculatorModel from '../components/calculator-mvp/model/CalculatorModel';
+import Calculator from '../components/calculator-mvp/view/Calculator';
 
 // MVVM
-import CalcMVVM from '../../components/calculator-mvvm/view/Calculator';
-import CalculatorViewModel from '../../components/calculator-mvvm/viewmodel/CalculatorViewModel';
-import CalcModelMVVM from '../../components/calculator-mvvm/model/CalculatorModel';
+import CalcMVVM from '../components/calculator-mvvm/view/Calculator';
+import CalculatorViewModel from '../components/calculator-mvvm/viewmodel/CalculatorViewModel';
+import CalcModelMVVM from '../components/calculator-mvvm/model/CalculatorModel';
 
 // Other Components
-import SimpleButton from '../../components/button';
+import SimpleButton from '../components/button';
 
 import './App.css';
 
@@ -38,7 +39,7 @@ export default class App extends React.Component {
     // MVVM
     const model = new CalcModelMVVM();
     const emitter = new LiteEventEmitter();
-    const vm = new CalculatorViewModel(model, emitter);
+    const vm = new CalculatorViewModel(model, emitter); // eslint-disable-line no-unused-vars
 
     const cont = document.getElementById('calcMVVM');
     ReactDOM.render(

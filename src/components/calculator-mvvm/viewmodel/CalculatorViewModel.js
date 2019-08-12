@@ -67,7 +67,7 @@ export default class CalculatorViewModel {
   }
 
   getValue(value) {
-    return this.model.total == 0 || this.state === FIRST_OPERATION
+    return this.model.total === 0 || this.state === FIRST_OPERATION
       ? value
       : this.model.total + value;
   }
