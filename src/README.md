@@ -57,7 +57,7 @@ Redux was created on top of three core concepts:
 
 Every action will be first passed through a list of middleware. Unlike reducers, middleware can modify, stop, or add more actions. Examples might include: a logging middleware, an authorization middleware that checks if the user has permissions to run the action, or an API middleware that sends something to the server.
 
-## Get Started
+### Provider
 
 When starting a Redux project, we first start by creating the store object, then wrap our main React `view` inside Redux's `Provider` object.
 
@@ -73,3 +73,15 @@ ReactDOM.render(
 Once the store is created and associated to a specific reducer (Calculator Reducer), we can wrap our main view (Calculator Container) inside a `Provider` object from the redux library.
 
 `Provider` as an object that receives the store as an input and propagates the data to all the container components. The components inside of the application have access to the store via the `Provider`.
+
+### View
+
+React + Redux distinguish two types of components for us.
+
+- Presentational 
+- Container
+
+Presentational components are components responsible for the look and feel of the `view`. Considered to be more or less like the `Passive View`.
+
+Container components are simliar to the `Supervising Controller`. Container components are responsible for the services and logic such as `handling user interactions`, `access to the store`, and `mapping records and values` from the store as `props` to React Components.
+
