@@ -1,29 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class SimpleButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: 0,
-      hasButtonBeenClicked: false
-    };
-  }
+export default function SimpleButton() {
+  const [count, setCount] = useState(0);
+  const { className, disabled, text } = useState(0);
+  const [hasButtonBeenClicked, setHasButtonBeenClicked] = useState('false');
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
 
-  handleClick = () => {
-    this.setState({ counter: this.state.counter + 1 }, () =>
-      this.setState({ hasButtonBeenClicked: this.state.counter > 0 })
-    );
-    // this.props.callback();
-  };
-
-  render = () => (
+  return (
     <button
-      onClick={this.handleClick}
-      className={this.props.className}
-      disabled={this.props.disabled === 'true' || this.props.disabled === true}
+      onClick={() => {
+        setHasButtonBeenClicked(count > 0);
+        setCount(count + 1);
+      }}
+      className={className}
+      disabled={disabled === 'true' || disabled === true}
     >
-      {this.props.text} {this.state.counter}
-      {this.state.hasButtonBeenClicked && <div>Button Clicked!</div>}
+      {text} {count}
+      {hasButtonBeenClicked && <div>Button Clicked!</div>}
     </button>
   );
 }
