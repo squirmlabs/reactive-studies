@@ -55,6 +55,8 @@ Redux was created on top of three core concepts:
 
 ### Middleware
 
+Middleware is a more advanced feature of Redux and will be discussed in detail in later chapters. The middleware act like interceptors for actions before they reach the store: they can modify the actions, create more actions, suppress actions, and much more. Since the middleware have access to the actions, the dispatch() function, and the store, they are the most versatile and powerful entities in Redux.
+
 Every action will be first passed through a list of middleware. Unlike reducers, middleware can modify, stop, or add more actions. Examples might include: a logging middleware, an authorization middleware that checks if the user has permissions to run the action, or an API middleware that sends something to the server.
 
 ### Provider
