@@ -1,0 +1,40 @@
+.Day {
+  box-sizing: inherit;
+  width: calc(100% / 7);
+  position: relative;
+  font: inherit;
+  cursor: pointer;
+}
+
+.DayNumber {
+  display: block;
+  position: relative;
+}
+
+.DayNumber span {
+  color: #1d2429;
+}
+
+.DayDisabled {
+  cursor: not-allowed;
+}
+
+
+.Selected,
+.InRange,
+.StartEdge,
+.EndEdge {
+  pointer-events: none;
+}
+
+.InRange {}
+
+.DayStartPreview,
+.DayInPreview,
+.DayEndPreview {
+  pointer-events: none;
+}
+
+.DayHovered {}
+
+.DayActive {}
