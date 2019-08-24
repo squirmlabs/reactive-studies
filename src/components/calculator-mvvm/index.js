@@ -5,17 +5,15 @@ import CalculatorViewModel from './viewmodel/CalculatorViewModel';
 import CalculatorModel from './model/CalculatorModel';
 import { LiteEventEmitter } from 'lite-event-emitter';
 
-export default class App {
-  constructor() {
-    const model = new CalculatorModel();
-    const emitter = new LiteEventEmitter();
-    const vm = new CalculatorViewModel(model, emitter);
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.model = new CalculatorModel();
+    this.emitter = new LiteEventEmitter();
+    this.vm = new CalculatorViewModel(this.model, this.emitter);
+  }
 
-    const cont = document.getElementById('app');
-    ReactDOM.render(
-      <Calculator emitter={emitter} initValue={model.total} />,
-      cont
-    );
+  render() {
+    return <Calculator emitter={this.emitter} initValue={this.model.total} />;
   }
 }
-
