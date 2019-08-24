@@ -33,10 +33,10 @@ export default function App(props) {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <CalendarDemo />
+        <CalendarToggle />
         {/* <CalculatorMVVM />
         <CalculatorMVP />
         <CalculatorMVC /> */}
-        <CalendarToggle />
         {/* <SimpleButton className="btn btn-primary" text="Simple Button" /> */}
       </div>
     </JssProvider>
