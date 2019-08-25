@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { rangeShape } from './DayCell';
 import Month from './Month';
 import DateDisplay from './DateDisplay';
-import { calcFocusDate, generateStyles, getMonthDisplayRange } from '../utils';
+import { calcFocusDate, generateStyles } from '../utils';
 import classnames from 'classnames';
 import {
   addMonths,
@@ -17,7 +17,6 @@ import {
   setMonth,
   differenceInCalendarMonths,
   isSameMonth,
-  differenceInDays,
   min,
   max
 } from 'date-fns';
@@ -27,10 +26,8 @@ class Calendar extends PureComponent {
   constructor(props, context) {
     super(props, context);
     this.focusToDate = this.focusToDate.bind(this);
-    this.onDragSelectionMove = this.onDragSelectionMove.bind(this);
     this.renderMonthAndYear = this.renderMonthAndYear.bind(this);
     this.updatePreview = this.updatePreview.bind(this);
-    this.estimateMonthSize = this.estimateMonthSize.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.dateOptions = { locale: props.locale };
     this.styles = generateStyles([coreStyles, props.classNames]);
@@ -217,6 +214,7 @@ class Calendar extends PureComponent {
       <DateDisplay
         defaultColor={rangeColors[focusedRange[0]] || color}
         focusedRange={focusedRange}
+        handleRangeFocusChange={this.handleRangeFocusChange}
         formatDateDisplay={this.formatDateDisplay}
         color={color}
         ranges={ranges}
@@ -270,7 +268,7 @@ class Calendar extends PureComponent {
       });
     }
   };
-  onDragSelectionMove(date) {
+  onDragSelectionMove = date => {
     const { drag } = this.state;
     if (!drag.status || !this.props.dragSelectionEnabled) return;
     this.setState({
@@ -280,23 +278,7 @@ class Calendar extends PureComponent {
         disablePreview: true
       }
     });
-  }
-
-  estimateMonthSize(index, cache) {
-    const { minDate } = this.props;
-    const { scrollArea } = this.state;
-
-    if (cache) {
-      this.listSizeCache = cache;
-      if (cache[index]) return cache[index];
-    }
-
-    const monthStep = addMonths(minDate, index);
-    const { start, end } = getMonthDisplayRange(monthStep, this.dateOptions);
-    const isLongMonth =
-      differenceInDays(end, start, this.dateOptions) + 1 > 7 * 5;
-    return isLongMonth ? scrollArea.longMonthHeight : scrollArea.monthHeight;
-  }
+  };
 
   formatDateDisplay = (date, defaultText) => {
     if (!date) return defaultText;
@@ -311,7 +293,7 @@ class Calendar extends PureComponent {
       rangeColors,
       color
     } = this.props;
-  
+
     const { focusedDate } = this.state;
 
     const navigatorRenderer =
@@ -334,7 +316,9 @@ class Calendar extends PureComponent {
         }}
       >
         {showDateDisplay && this.renderDateDisplay()}
+
         {navigatorRenderer(focusedDate, this.changeShownDate, this.props)}
+
         {
           <div
             className={classnames(
