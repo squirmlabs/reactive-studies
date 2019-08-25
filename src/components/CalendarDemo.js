@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { DateRange } from './calendar';
-import { format } from 'date-fns';
+import { DateRange } from './calendar-full-page';
 import Section from './Section';
 
 import 'normalize.css';

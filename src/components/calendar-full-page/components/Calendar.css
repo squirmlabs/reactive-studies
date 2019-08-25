@@ -1,0 +1,102 @@
+.CalendarWrapper {
+  box-sizing: border-box;
+  background: #ffffff;
+  user-select: none;
+}
+
+.DateDisplay {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DateDisplayItem {
+  flex: 1 1;
+  width: 0;
+  text-align: center;
+  color: inherit;
+}
+
+.DateDisplayItem+ {
+  margin-left: 0.833em;
+}
+
+.DateDisplayItem input {
+  text-align: inherit;
+}
+
+.DateDisplayItem input:disabled {
+  cursor: default;
+}
+
+.DateDisplayItemActive {}
+
+.MonthAndYearWrapper {
+  box-sizing: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MonthAndYearPickers {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MonthPicker {}
+
+.YearPicker {}
+
+.NextPrevButton {
+  box-sizing: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.PprevButton {}
+
+.NextButton {}
+
+.Months {
+  display: flex;
+}
+
+.MonthsVertical {
+  flex-direction: column;
+}
+
+.MonthsHorizontal>div>div>div {
+  display: flex;
+  flex-direction: row;
+}
+
+.Month {
+  width: 27.667em;
+}
+
+.WeekDays {
+  display: flex;
+}
+
+.WeekDay {
+  flex-basis: calc(100% / 7);
+  box-sizing: inherit;
+  text-align: center;
+}
+
+.Days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Days button {
+  outline: none
+}
+
+.DateDisplayWrapper {}
+
+.MonthName {}
+
+.InfiniteMonths {
+  overflow: auto;
+}
