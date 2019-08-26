@@ -5,7 +5,7 @@ import {
   startOfMonth,
   endOfMonth,
   startOfWeek,
-  endOfWeek,
+  endOfWeek
 } from 'date-fns';
 
 export function calcFocusDate(currentFocusedDate, props) {
@@ -16,17 +16,18 @@ export function calcFocusDate(currentFocusedDate, props) {
     const range = ranges[focusedRange[0]] || {};
     targetInterval = {
       start: range.startDate,
-      end: range.endDate,
+      end: range.endDate
     };
   } else {
     targetInterval = {
       start: date,
-      end: date,
+      end: date
     };
   }
   targetInterval.start = startOfMonth(targetInterval.start || new Date());
   targetInterval.end = endOfMonth(targetInterval.end || targetInterval.start);
-  const targetDate = targetInterval.start || targetInterval.end || shownDate || new Date();
+  const targetDate =
+    targetInterval.start || targetInterval.end || shownDate || new Date();
 
   // initial focus
   if (!currentFocusedDate) return shownDate || targetDate;
@@ -35,7 +36,7 @@ export function calcFocusDate(currentFocusedDate, props) {
   // if (props.scroll.enabled) return targetDate;
   const currentFocusInterval = {
     start: startOfMonth(currentFocusedDate),
-    end: endOfMonth(addMonths(currentFocusedDate, months - 1)),
+    end: endOfMonth(addMonths(currentFocusedDate, months - 1))
   };
   if (areIntervalsOverlapping(targetInterval, currentFocusInterval)) {
     // don't change focused if new selection in view area
@@ -46,10 +47,13 @@ export function calcFocusDate(currentFocusedDate, props) {
 
 export function findNextRangeIndex(ranges, currentRangeIndex = -1) {
   const nextIndex = ranges.findIndex(
-    (range, i) => i > currentRangeIndex && range.autoFocus !== false && !range.disabled
+    (range, i) =>
+      i > currentRangeIndex && range.autoFocus !== false && !range.disabled
   );
   if (nextIndex !== -1) return nextIndex;
-  return ranges.findIndex(range => range.autoFocus !== false && !range.disabled);
+  return ranges.findIndex(
+    range => range.autoFocus !== false && !range.disabled
+  );
 }
 
 export function getMonthDisplayRange(date, dateOptions) {
@@ -61,7 +65,7 @@ export function getMonthDisplayRange(date, dateOptions) {
     start: startDateOfCalendar,
     end: endDateOfCalendar,
     startDateOfMonth,
-    endDateOfMonth,
+    endDateOfMonth
   };
 }
 
