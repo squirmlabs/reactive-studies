@@ -126,6 +126,7 @@ class Calendar extends PureComponent {
       />
     );
   };
+
   onDragSelectionStart = date => {
     const { onChange, dragSelectionEnabled } = this.props;
 
@@ -156,10 +157,12 @@ class Calendar extends PureComponent {
       onChange && onChange(date);
       return;
     }
+
     const newRange = {
       startDate: this.state.drag.range.startDate,
       endDate: date
     };
+
     if (displayMode !== 'dateRange' || isSameDay(newRange.startDate, date)) {
       this.setState(
         { drag: { status: false, range: {} } },
@@ -171,6 +174,7 @@ class Calendar extends PureComponent {
       });
     }
   };
+
   onDragSelectionMove = date => {
     const { drag } = this.state;
     if (!drag.status || !this.props.dragSelectionEnabled) return;
@@ -199,9 +203,6 @@ class Calendar extends PureComponent {
 
     const { focusedDate } = this.state;
 
-    const navigatorRenderer =
-      this.props.navigatorRenderer || this.renderMonthAndYear;
-
     const ranges = this.props.ranges.map((range, i) => ({
       ...range,
       color: range.color || rangeColors[i] || color
@@ -220,7 +221,7 @@ class Calendar extends PureComponent {
       >
         {showDateDisplay && this.renderDateDisplay()}
 
-        {navigatorRenderer(focusedDate, this.changeShownDate, this.props)}
+        {this.renderMonthAndYear(focusedDate, this.changeShownDate, this.props)}
 
         {
           <div

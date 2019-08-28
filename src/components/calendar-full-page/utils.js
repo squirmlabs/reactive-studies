@@ -5,7 +5,13 @@ import {
   startOfMonth,
   endOfMonth,
   startOfWeek,
-  endOfWeek
+  endOfWeek,
+  isBefore,
+  differenceInCalendarDays,
+  addDays,
+  min,
+  isWithinInterval,
+  max
 } from 'date-fns';
 
 export function calcFocusDate(currentFocusedDate, props) {
@@ -80,4 +86,78 @@ export function generateStyles(sources) {
       return styles;
     }, {});
   return generatedStyles;
+}
+
+export function calculateNewSelection(
+  disabledDates,
+  focusedRange,
+  maxDate,
+  moveRangeOnFirstSelection,
+  onChange,
+  selectedRange,
+  isSingleValue = true,
+  value
+) {
+  if (!selectedRange || !onChange) return {};
+
+  let { startDate, endDate } = selectedRange;
+
+  if (!endDate) endDate = new Date(startDate);
+
+  let nextFocusRange;
+
+  if (!isSingleValue) {
+    startDate = value.startDate;
+    endDate = value.endDate;
+  } else if (focusedRange[1] === 0) {
+    // startDate selection
+    const dayOffset = differenceInCalendarDays(endDate, startDate);
+
+    startDate = value;
+
+    endDate = moveRangeOnFirstSelection ? addDays(value, dayOffset) : value;
+
+    if (maxDate) endDate = min([endDate, maxDate]);
+
+    nextFocusRange = [focusedRange[0], 1];
+  } else {
+    endDate = value;
+  }
+
+  // reverse dates if startDate before endDate
+  let isStartDateSelected = focusedRange[1] === 0;
+
+  if (isBefore(endDate, startDate)) {
+    isStartDateSelected = !isStartDateSelected;
+    [startDate, endDate] = [endDate, startDate];
+  }
+
+  const inValidDatesWithinRange = disabledDates.filter(disabledDate =>
+    isWithinInterval(disabledDate, {
+      start: startDate,
+      end: endDate
+    })
+  );
+
+  if (inValidDatesWithinRange.length > 0) {
+    if (isStartDateSelected) {
+      startDate = addDays(max(inValidDatesWithinRange), 1);
+    } else {
+      endDate = addDays(min(inValidDatesWithinRange), -1);
+    }
+  }
+
+  if (!nextFocusRange) {
+    const nextFocusRangeIndex = findNextRangeIndex(
+      this.props.ranges,
+      focusedRange[0]
+    );
+    nextFocusRange = [nextFocusRangeIndex, 0];
+  }
+
+  return {
+    wasValid: !(inValidDatesWithinRange.length > 0),
+    range: { startDate, endDate },
+    nextFocusRange: nextFocusRange
+  };
 }

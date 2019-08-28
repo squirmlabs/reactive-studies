@@ -3,7 +3,7 @@ import React from 'react';
 // ==================================================================
 import JssProvider from '../providers/JssProvider';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 
 // ==================================================================
 // // MVC
@@ -21,7 +21,7 @@ import logo from './logo.svg';
 
 // Demos
 import CalendarDemo from '../components/CalendarDemo';
-import CalendarToggle from '../components/calendar/components/calendar-provider-pattern-a';
+// import CalendarToggle from '../components/calendar/components/calendar-provider-pattern-a';
 
 import './App.css';
 
@@ -29,11 +29,11 @@ export default function App(props) {
   return (
     <JssProvider>
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-        </header>
+        </header> */}
         <CalendarDemo />
-        <CalendarToggle />
+        {/* <CalendarToggle /> */}
         {/* <CalculatorMVVM />
         <CalculatorMVP />
         <CalculatorMVC /> */}

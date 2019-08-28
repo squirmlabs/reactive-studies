@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 export default function MonthAndYear({
-  changeShownDate,
+  changeShownDate, 
   focusedDate,
   locale,
   lowerYearLimit,
