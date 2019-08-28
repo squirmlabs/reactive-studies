@@ -95,7 +95,7 @@ export function calculateNewSelection(
   moveRangeOnFirstSelection,
   onChange,
   selectedRange,
-  isSingleValue = true,
+  isSingleValue,
   value
 ) {
   if (!selectedRange || !onChange) return {};
